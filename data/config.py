@@ -679,8 +679,8 @@ yolact_base_config = coco_base_config.copy({
     'max_size': 550,
     
     # Training params
-    'lr_steps': (17, 25, 30),
-    'max_iter': 100,
+    'lr_steps': (17000, 25000, 30000),
+    'max_iter': 34000,
     
     # Backbone Settings
     'backbone': resnet101_backbone.copy({
