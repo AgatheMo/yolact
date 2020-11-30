@@ -436,7 +436,7 @@ coco_base_config = Config({
     'max_iter': 400000,
 
     # The maximum number of detections for evaluation
-    'max_num_detections': 100,
+    'max_num_detections': 10000,
 
     # dw' = momentum * dw - lr * (grad + decay * w)
     'lr': 1e-3,
