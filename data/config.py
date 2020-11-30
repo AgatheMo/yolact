@@ -433,10 +433,10 @@ coco_base_config = Config({
     'dataset': coco_custom_dataset,
     'num_classes': 18, # This should include the background class
 
-    'max_iter': 34000,
+    'max_iter': 340000,
 
     # The maximum number of detections for evaluation
-    'max_num_detections': 100,
+    'max_num_detections': 10000,
 
     # dw' = momentum * dw - lr * (grad + decay * w)
     'lr': 1e-3,
@@ -680,7 +680,7 @@ yolact_base_config = coco_base_config.copy({
     
     # Training params
     'lr_steps': (17000, 25000, 30000),
-    'max_iter': 34000,
+    'max_iter': 340000,
     
     # Backbone Settings
     'backbone': resnet101_backbone.copy({
