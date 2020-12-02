@@ -436,7 +436,7 @@ coco_base_config = Config({
     'max_iter': 400000,
 
     # The maximum number of detections for evaluation
-    'max_num_detections': 10000,
+    'max_num_detections': 100000,
 
     # dw' = momentum * dw - lr * (grad + decay * w)
     'lr': 1e-3,
@@ -596,7 +596,7 @@ coco_base_config = Config({
     'mask_dim': None,
 
     # Input image size.
-    'max_size': 300,
+    'max_size': 800,
     
     # Whether or not to do post processing on the cpu at test time
     'force_cpu_nms': True,
