@@ -224,7 +224,7 @@ darknet_transform = Config({
 
 backbone_base = Config({
     'name': 'Base Backbone',
-    'path': 'path/to/pretrained/weights',
+    'path': './weights/resnet101_reducedfc.pth',
     'type': object,
     'args': tuple(),
     'transform': resnet_transform,
