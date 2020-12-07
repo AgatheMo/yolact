@@ -439,7 +439,7 @@ coco_base_config = Config({
     'max_num_detections': 100000,
 
     # dw' = momentum * dw - lr * (grad + decay * w)
-    'lr': 1e-3,
+    'lr': 0.025,
     'momentum': 0.9,
     'decay': 5e-4,
 
