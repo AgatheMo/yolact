@@ -62,7 +62,6 @@ class Config(object):
     """
     Holds the configuration for anything you want it to.
     To get the currently active config, call get_cfg().
-
     To use, just do cfg.x instead of cfg['x'].
     I made this because doing cfg['x'] all the time is dumb.
     """
@@ -126,21 +125,6 @@ dataset_base = Config({
     # provide a map from category_id -> index in class_names + 1 (the +1 is there because it's 1-indexed).
     # If not specified, this just assumes category ids start at 1 and increase sequentially.
     'label_map': None
-})
-
-coco_custom_dataset = dataset_base.copy({
-    'name': 'COCO_vertebres',
-    
-    'train_images': './datasets/coco/images_train',
-    'train_info': './datasets/coco/annotations/train_segmentation.json',
-    
-    'valid_images':'./datasets/coco/images_test',
-    'valid_info': './datasets/coco/annotations/test_segmentation.json',
-    
-    'has_gt': True,
-    'class_names':('T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12','L1','L2','L3','L4','L5')
-    
-
 })
 
 coco2014_dataset = dataset_base.copy({
@@ -224,7 +208,7 @@ darknet_transform = Config({
 
 backbone_base = Config({
     'name': 'Base Backbone',
-    'path': './weights/resnet101_reducedfc.pth',
+    'path': 'path/to/pretrained/weights',
     'type': object,
     'args': tuple(),
     'transform': resnet_transform,
@@ -430,16 +414,16 @@ fpn_base = Config({
 # ----------------------- CONFIG DEFAULTS ----------------------- #
 
 coco_base_config = Config({
-    'dataset': coco_custom_dataset,
-    'num_classes': 18, # This should include the background class
+    'dataset': coco2014_dataset,
+    'num_classes': 81, # This should include the background class
 
-    'max_iter': 34000,
+    'max_iter': 400000,
 
     # The maximum number of detections for evaluation
-    'max_num_detections': 100000,
+    'max_num_detections': 100,
 
     # dw' = momentum * dw - lr * (grad + decay * w)
-    'lr': 0.025,
+    'lr': 1e-3,
     'momentum': 0.9,
     'decay': 5e-4,
 
@@ -596,7 +580,7 @@ coco_base_config = Config({
     'mask_dim': None,
 
     # Input image size.
-    'max_size': 800,
+    'max_size': 300,
     
     # Whether or not to do post processing on the cpu at test time
     'force_cpu_nms': True,
@@ -672,15 +656,15 @@ yolact_base_config = coco_base_config.copy({
     'name': 'yolact_base',
 
     # Dataset stuff
-    'dataset': coco_custom_dataset,
-    'num_classes': len(coco_custom_dataset.class_names) + 1,
+    'dataset': coco2017_dataset,
+    'num_classes': len(coco2017_dataset.class_names) + 1,
 
     # Image Size
-    'max_size': 1000,
+    'max_size': 550,
     
     # Training params
-    'lr_steps': (20000, 35000, 40000),
-    'max_iter': 43000,
+    'lr_steps': (280000, 600000, 700000, 750000),
+    'max_iter': 800000,
     
     # Backbone Settings
     'backbone': resnet101_backbone.copy({
@@ -838,4 +822,3 @@ def set_cfg(config_name:str):
 def set_dataset(dataset_name:str):
     """ Sets the dataset of the current config. """
     cfg.dataset = eval(dataset_name)
-    
