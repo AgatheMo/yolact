@@ -670,15 +670,15 @@ yolact_base_config = coco_base_config.copy({
     'name': 'yolact_base',
 
     # Dataset stuff
-    'dataset': coco2017_dataset,
-    'num_classes': len(coco2017_dataset.class_names) + 1,
+    'dataset': coco_custom_dataset,
+    'num_classes': len(coco_custom_dataset.class_names) + 1,
 
     # Image Size
     'max_size': 550,
     
     # Training params
-    'lr_steps': (280000, 600000, 700000, 750000),
-    'max_iter': 800000,
+    'lr_steps': (20000, 30000, 41500,42000),
+    'max_iter': 43000,
     
     # Backbone Settings
     'backbone': resnet101_backbone.copy({
