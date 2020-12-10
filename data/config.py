@@ -430,10 +430,10 @@ fpn_base = Config({
 # ----------------------- CONFIG DEFAULTS ----------------------- #
 
 coco_base_config = Config({
-    'dataset': coco2014_dataset,
-    'num_classes': 81, # This should include the background class
+    'dataset': coco_custom_dataset,
+    'num_classes': 18, # This should include the background class
 
-    'max_iter': 400000,
+    'max_iter': 34000,
 
     # The maximum number of detections for evaluation
     'max_num_detections': 100000,
