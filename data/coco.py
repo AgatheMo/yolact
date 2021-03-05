@@ -152,7 +152,7 @@ class COCODetection(data.Dataset):
             except:
                 print(target)
                 print(width, height)
-                print(masks)
+                print(self.coco.annToMask(obj).reshape(-1) for obj in target)
                 exit()
 
         if self.target_transform is not None and len(target) > 0:
