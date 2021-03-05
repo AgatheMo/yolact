@@ -146,14 +146,10 @@ class COCODetection(data.Dataset):
         if len(target) > 0:
             # Pool all the masks for this image into one [num_objects,height,width] matrix
             masks = [self.coco.annToMask(obj).reshape(-1) for obj in target]
+            print(masks)
             masks = np.vstack(masks)
-            try:
-                masks = masks.reshape(-1, height, width)
-            except:
-                print(target)
-                print(width, height)
-                print(self.coco.annToMask(obj).reshape(-1) for obj in target)
-                exit()
+            masks = masks.reshape(-1, height, width)
+
 
         if self.target_transform is not None and len(target) > 0:
             target = self.target_transform(target, width, height)
