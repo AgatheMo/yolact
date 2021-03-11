@@ -130,10 +130,10 @@ dataset_base = Config({
 coco_custom_dataset = dataset_base.copy({
     'name': 'COCO_vertebres',
     
-    'train_images': './datasetsSJ/coco/images/',
+    'train_images': './datasetsSJ/coco/images_SJ/',
     'train_info': './datasetsSJ/coco/annotations/train_segmentation_SJ_K2.json',
     
-    'valid_images':'./datasetsSJ/coco/images',
+    'valid_images':'./datasetsSJ/coco/images_SJ/',
     'valid_info': './datasetsSJ/coco/annotations/test_segmentation_SJ_K2.json',
     
     'has_gt': True,
